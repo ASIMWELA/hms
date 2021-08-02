@@ -1,8 +1,10 @@
-const {DataTypes} = require('sequelize');
-const connection = require('../db/connection');
-const Medication = require('./Medication')
+const { DataTypes } = require("sequelize");
+const connection = require("../db/connection");
+const Medication = require("./Medication");
 
-  const Diagnosis = connection.define('Diagnoses',{
+const Diagnosis = connection.define(
+  "Diagnoses",
+  {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -11,20 +13,21 @@ const Medication = require('./Medication')
     },
     dateEntered: {
       type: DataTypes.DATE,
-      allowNull:false
+      allowNull: false,
     },
     dateDischarged: {
       type: DataTypes.DATE,
-      allowNull :false
+      allowNull: false,
     },
     admission: {
       type: DataTypes.BOOLEAN,
-      allowNull:false
-    }
+      allowNull: false,
+    },
   },
   {
-    timestamps:true
-});
+    timestamps: true,
+  }
+);
 
 // diagnosis foreign key Association
 // Diagnosis.hasOne(VisitHistory,{
@@ -33,7 +36,7 @@ const Medication = require('./Medication')
 // })
 // VisitHistory.belongsTo(Diagnosis,{foreignKey:'diagnosisId'});
 
-Diagnosis.hasOne(Medication)
-Medication.belongsTo(Diagnosis)
+Diagnosis.hasOne(Medication);
+Medication.belongsTo(Diagnosis);
 
-module.exports = Diagnosis
+module.exports = Diagnosis;
