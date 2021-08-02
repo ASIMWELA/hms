@@ -9,6 +9,6 @@ const connection = new Sequelize(process.env.DATABASE_URL, {
     ssl: { require: true, rejectUnauthorized: false },
   },
 });
-connection.sync({ force: false });
+//connection.sync({ force: false });
 
 module.exports = connection;
