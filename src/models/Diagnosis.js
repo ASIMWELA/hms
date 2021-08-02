@@ -29,13 +29,6 @@ const Diagnosis = connection.define(
   }
 );
 
-// diagnosis foreign key Association
-// Diagnosis.hasOne(VisitHistory,{
-//   onUpdate:"CASCADE",
-//   onDelete:"CASCADE"
-// })
-// VisitHistory.belongsTo(Diagnosis,{foreignKey:'diagnosisId'});
-
 Diagnosis.hasOne(Medication);
 Medication.belongsTo(Diagnosis);
 
