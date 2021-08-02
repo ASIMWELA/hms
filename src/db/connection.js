@@ -3,7 +3,14 @@ require("dotenv").config();
 
 const connectionString = `postgres://${process.env.DB_USER_NAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
 
-const connection = new Sequelize(process.env.DATABASE_URL, { ssl: true });
+const connection = new Sequelize(process.env.DATABASE_URL, {
+  ssl: true,
+  dialect: "postgres",
+  ssl: true,
+  dialectOptions: {
+    ssl: true,
+  },
+});
 connection.sync({ force: true });
 
 module.exports = connection;
