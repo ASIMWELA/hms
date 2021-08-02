@@ -6,7 +6,6 @@ const connectionString = `postgres://${process.env.DB_USER_NAME}:${process.env.D
 const connection = new Sequelize(process.env.DATABASE_URL, {
   ssl: true,
   dialect: "postgres",
-  ssl: true,
   dialectOptions: {
     ssl: true,
   },
