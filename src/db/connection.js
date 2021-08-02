@@ -1,11 +1,10 @@
-const {Sequelize} = require("sequelize")
-require('dotenv').config()
+const { Sequelize } = require("sequelize");
+require("dotenv").config();
 
-const connection = new Sequelize(process.env.DB_NAME, process.env.DB_USER_NAME, process.env.DB_PASSWORD, {
-    host: 'localhost',
-    dialect: 'postgres'
-  });
+const connectionString = `postgres://${process.env.DB_USER_NAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
 
-  //connection.sync({force:true})
+const connection = new Sequelize(connectionString);
 
-  module.exports = connection
+connection.sync({ force: true });
+
+module.exports = connection;
