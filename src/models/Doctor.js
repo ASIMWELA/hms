@@ -4,6 +4,7 @@ const {DataTypes} = require('sequelize');
 const connection = require('../db/connection');
 const Sequelize = require('sequelize')
 const Appointment = require('./Appointment')
+const Role = require('./Role')
 
   const Doctor = connection.define('Doctors',{
     id:{
@@ -63,5 +64,10 @@ const Appointment = require('./Appointment')
   })
   Appointment.belongsTo(Doctor)
   
+  Doctor.hasOne(Role,{
+    onDelete:'NO ACTION',
+    onUpdate:'CASCADE'
+  })
+  Role.belongsTo(Doctor)
 
 module.exports = Doctor
