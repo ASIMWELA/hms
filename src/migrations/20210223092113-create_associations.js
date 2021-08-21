@@ -15,6 +15,36 @@ module.exports = {
         onUpdate: "CASCADE",
         onDelete: "NO ACTION",
       })
+
+//associate a role to Doctors
+    .then(async()=>{
+      return await queryInterface.addColumn("Doctors","RoleId",{
+        type: DataTypes.INTEGER,
+        references:{
+          model: "Roles", // name of Target model
+          key: "id", // key in Target model that we're referencing'
+        },
+        onUpdate: "CASCADE",
+        onDelete: "NO ACTION",
+      })
+    })
+    .then(async()=>{
+      return await queryInterface.addColumn("Patients","RoleId",{
+        type: DataTypes.INTEGER,
+        references:{
+          model: "Roles", // name of Target model
+          key: "id", // key in Target model that we're referencing'
+        },
+        onUpdate: "CASCADE",
+        onDelete: "NO ACTION",
+      })
+    })
+
+    // associate a role with patient
+
+
+
+
       .then(async () => {
         return await queryInterface.addColumn("FinancialStatuses", "SchemeId", {
           type: DataTypes.INTEGER,
@@ -216,6 +246,13 @@ module.exports = {
           "VisitHistories",
           "DiagnosisId"
         );
+      })
+      .then(async () => {
+        return await queryInterface.removeColumn("Doctors", "RoleId");
+      })
+      
+      .then(async () => {
+        return await queryInterface.removeColumn("Patients", "RoleId");
       })
       .then(async () => {
         return await queryInterface.removeColumn("VisitHistories", "RoomId");

@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const   { handleError } = require('./utils/ErrorHandler')
+
 require('dotenv').config();
 
 //import routes
@@ -21,6 +22,7 @@ app.use(express.json())
 
 app.use('/api/patients', PatientRoutes)
 app.use('/api/auth', AuthRoutes)
+// app.use('/api/users',userRoutes)
 
 
 //error handling

@@ -12,7 +12,8 @@ const VisitHistory = require('./VisitHistory')
 const Diagnosis = require('./Diagnosis');
 const Room = require('./Room');
 const Procedure = require('./Procedure')
-const PatientVitals = require('./PatientVitals')
+const PatientVitals = require('./PatientVitals');
+const Role = require('./Role');
 
 const Patient = connection.define('Patients', {
   // Model attributes are defined here
@@ -159,6 +160,12 @@ PatientVitals.belongsTo(Patient, {
   onDelete:'NO ACTION',
   onUpdate:'CASCADE'
 })
+
+Patient.hasOne(Role,{
+  onDelete:'NO ACTION',
+  onUpdate:'CASCADE'
+})
+Role.belongsTo(Patient)
 
 
 module.exports = Patient

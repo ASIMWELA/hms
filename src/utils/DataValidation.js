@@ -6,9 +6,7 @@ class Validator{
         const schema = Joi.object({
           
             userName: Joi.string().required(),
-    
-            password: Joi.string()
-                             .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
+            password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
              email: Joi.string().email().required(),
              lastName:Joi.string().min(4).required(),
              firstName:Joi.string().required(),
