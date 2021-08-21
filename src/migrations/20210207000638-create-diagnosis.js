@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 
 const { DataTypes } = require("sequelize");
 const Patient = require("../models/Patient");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Diagnoses', {
-     id: {
+    await queryInterface.createTable("diagnoses", {
+      id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
@@ -14,31 +14,31 @@ module.exports = {
       },
       date_entered: {
         type: DataTypes.DATE,
-        allowNull:false
+        allowNull: false,
       },
       date_discharged: {
         type: DataTypes.DATE,
-        allowNull :false
+        allowNull: false,
       },
       admission: {
         type: DataTypes.BOOLEAN,
-        allowNull:false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
       },
-      Patient_id:{
+      Patient_id: {
         allowNull: false,
-        type:DataTypes.INTEGER
-      }
+        type: DataTypes.INTEGER,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Diagnoses');
-  }
+    await queryInterface.dropTable("diagnoses");
+  },
 };

@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const connection = require("../db/connection");
 
 const Room = connection.define(
-  "Rooms",
+  "rooms",
   {
     id: {
       allowNull: false,

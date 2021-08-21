@@ -1,29 +1,28 @@
-'use strict';
-const {DataTypes} = require('sequelize')
+"use strict";
+const { DataTypes } = require("sequelize");
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('FinancialStatuses', {
+    await queryInterface.createTable("financialStatuses", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
       },
       OnScheme: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
       },
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: DataTypes.DATE
-      }
-    
+        type: DataTypes.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('FinancialStatuses');
-  }
+    await queryInterface.dropTable("financialStatuses");
+  },
 };

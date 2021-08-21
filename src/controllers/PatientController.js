@@ -1,6 +1,7 @@
 const Validator = require("../utils/DataValidation");
 const { Op } = require("sequelize");
 const bcrypt = require("bcrypt");
+const { PATIENT } = require("../utils/roles");
 
 const { ErrorHandler } = require("../utils/ErrorHandler");
 
@@ -19,6 +20,7 @@ module.exports = {
     const salt = bcrypt.genSaltSync(saltRounds);
     try {
       //validate using the schema
+      req.body.role = PATIENT;
       const { error, value } = Validator.patientValidation(req.body);
 
       if (error) {
@@ -36,7 +38,7 @@ module.exports = {
 
       //check if the new patients name or email already exist in the db
       if (patientExists !== null) {
-        next(new ErrorHandler(409, "Username or password already taken"));
+        next(new ErrorHandler(409, "Username or email already taken"));
       }
 
       //hash the password
@@ -64,16 +66,18 @@ module.exports = {
     try {
       const allPatients = await Patient.findAll({
         attributes: [
-          "firstName",
-          "lastName",
-          "middleName",
+          "uuid",
           "userName",
           "email",
+          "firstName",
+          "lastName",
+          "role",
           "sex",
-          "uuid",
           "phoneNumber",
         ],
       });
+
+      console.log(req.role);
 
       patients = {
         patients: allPatients,
@@ -98,6 +102,7 @@ module.exports = {
         "userName",
         "email",
         "sex",
+        "role",
         "uuid",
         "phoneNumber",
       ];
