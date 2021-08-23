@@ -3,7 +3,7 @@ const connection = require("../db/connection");
 const Medication = require("./Medication");
 
 const Diagnosis = connection.define(
-  "Diagnoses",
+  "diagnoses",
   {
     id: {
       type: DataTypes.INTEGER,

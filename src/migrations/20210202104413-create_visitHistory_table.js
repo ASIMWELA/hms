@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("VisitHistories", {
+    await queryInterface.createTable("visitHistories", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -22,6 +22,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("VisitHistories");
+    await queryInterface.dropTable("visitHistories");
   },
 };

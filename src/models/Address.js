@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const connection = require("../db/connection");
 
 const Address = connection.define(
-  "Addresses",
+  "addresses",
   {
     // Model attributes are defined here
     id: {

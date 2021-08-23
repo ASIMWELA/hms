@@ -5,7 +5,7 @@ const Patient = require("./Patient");
 const Diagnosis = require("./Diagnosis");
 const connection = require("../db/connection");
 
-const VisitHistory = connection.define("VisitHistory", {
+const VisitHistory = connection.define("visit_history", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -24,11 +24,11 @@ const VisitHistory = connection.define("VisitHistory", {
 
 VisitHistory.belongsToMany(Doctor, {
   onDelete: "NO ACTION",
-  through: "DoctorAttended",
+  through: "doctor_attended",
 });
 
 Doctor.belongsToMany(VisitHistory, {
-  through: "DoctorAttended",
+  through: "doctor_attended",
 });
 
 Diagnosis.hasOne(VisitHistory, {

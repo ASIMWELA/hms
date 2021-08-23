@@ -4,7 +4,7 @@ const connection = require("../db/connection");
 const Scheme = require("./Scheme");
 
 const FinancialStatus = connection.define(
-  "FinancialStatuses",
+  "financial_statuses",
   {
     id: {
       allowNull: false,

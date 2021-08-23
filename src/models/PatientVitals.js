@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const connection = require("../db/connection");
 
 const PatientVitals = connection.define(
-  "PatientVitals",
+  "patient_vitals",
   {
     id: {
       type: DataTypes.INTEGER,
